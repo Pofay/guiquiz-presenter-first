@@ -61,7 +61,14 @@ public class QuizPresenterTest {
 
 
     private class QuizModel {
+        private final String questionText;
+
         public QuizModel(String questionText, boolean answer) {
+            this.questionText = questionText;
+        }
+
+        public String getQuestionText() {
+            return questionText;
         }
     }
 
@@ -69,7 +76,7 @@ public class QuizPresenterTest {
 
         public QuizPresenter(QuizView view, QuizModel model) {
             view.showCorrectMessage();
-            view.setQuestionText("New Question");
+            view.setQuestionText(model.getQuestionText());
         }
 
         public void onAnswer(boolean b) {
