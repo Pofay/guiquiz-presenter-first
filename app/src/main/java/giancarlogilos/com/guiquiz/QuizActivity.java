@@ -1,15 +1,18 @@
 package giancarlogilos.com.guiquiz;
 
 import android.os.Bundle;
-import android.support.design.widget.FloatingActionButton;
-import android.support.design.widget.Snackbar;
 import android.support.v7.app.AppCompatActivity;
 import android.support.v7.widget.Toolbar;
-import android.view.View;
 import android.view.Menu;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.Button;
+import android.widget.Toast;
 
 public class QuizActivity extends AppCompatActivity {
+
+    private Button mTrueButton;
+    private Button mFalseButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -17,7 +20,35 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setupComponents();
+        setupButtonListeners();
+    }
 
+    private void setupComponents() {
+        mTrueButton = (Button) findViewById(R.id.true_button);
+        mFalseButton = (Button) findViewById(R.id.false_button);
+
+    }
+
+    private void setupButtonListeners() {
+        mTrueButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showMessage(R.string.correct_toast);
+            }
+        });
+        mFalseButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                showMessage(R.string.incorrect_toast);
+            }
+        });
+    }
+
+    private void showMessage(int resourceIdMessage) {
+        Toast.makeText(QuizActivity.this, resourceIdMessage,Toast.LENGTH_SHORT).show();
     }
 
     @Override
