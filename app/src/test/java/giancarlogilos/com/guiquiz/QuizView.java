@@ -5,4 +5,7 @@ package giancarlogilos.com.guiquiz;
  */
 public interface QuizView {
     void setQuestionText(String actual);
+
+    void showCorrectMessage();
+
 }
