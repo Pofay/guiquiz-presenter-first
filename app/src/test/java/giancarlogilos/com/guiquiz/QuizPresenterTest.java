@@ -45,6 +45,17 @@ public class QuizPresenterTest {
     }
 
     @Test
+    public void ItShouldNotInvokeAnyOtherOperationInTheViewOnCreation(){
+        // Arrange
+        QuizView view = mock(QuizView.class);
+        QuizModel model = new QuizModel("",true);
+
+        // Act
+        new QuizPresenter(view,model);
+        // Assert
+        verify(view, never()).showCorrectMessage();
+    }
+    @Test
     public void ItShouldShowCorrectMessageWhenAnswerIsCorrect(){
         // Arrange
         QuizView view = mock(QuizView.class);
@@ -56,6 +67,18 @@ public class QuizPresenterTest {
 
         // Assert
         verify(view).showCorrectMessage();
+    }
+
+    @Test
+    public void ItShouldShowIncorrectMessageWhenAnswerIsIncorrect(){
+        QuizView view = mock(QuizView.class);
+        String question = "Are you mad?";
+        QuizModel model = new QuizModel(question, false);
+        QuizPresenter presenter = new QuizPresenter(view, model);
+
+        presenter.onAnswer(true);
+
+        verify(view).showInCorrectMessage();
     }
 
 
@@ -74,13 +97,17 @@ public class QuizPresenterTest {
 
     private class QuizPresenter {
 
+        private final QuizView view;
+
         public QuizPresenter(QuizView view, QuizModel model) {
-            view.showCorrectMessage();
+            this.view = view;
             view.setQuestionText(model.getQuestionText());
         }
 
         public void onAnswer(boolean b) {
 
+            view.showInCorrectMessage();
+            view.showCorrectMessage();
         }
     }
 }
