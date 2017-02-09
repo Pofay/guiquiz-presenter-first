@@ -8,5 +8,5 @@ public interface QuizView {
 
     void showCorrectMessage();
 
-    void showInCorrectMessage();
+    void showIncorrectMessage();
 }
