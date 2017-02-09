@@ -1,4 +1,4 @@
-package giancarlogilos.com.guiquiz;
+package core;
 
 /**
  * Created by Gilos on 2/8/2017.

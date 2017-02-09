@@ -4,6 +4,10 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import core.QuizModel;
+import core.QuizPresenter;
+import core.QuizView;
+
 import static org.mockito.Mockito.mock;
 import static org.mockito.Mockito.never;
 import static org.mockito.Mockito.verify;
@@ -87,44 +91,11 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizModel model = new QuizModel("Some Question", true);
         QuizPresenter presenter = new QuizPresenter(view, model);
+
         presenter.onAnswer(true);
+
         verify(view, never()).showIncorrectMessage();
     }
 
-    private class QuizModel {
-        private final String questionText;
-        private boolean answer;
 
-        public QuizModel(String questionText, boolean answer) {
-            this.questionText = questionText;
-            this.answer = answer;
-        }
-
-        public String getQuestionText() {
-            return questionText;
-        }
-
-        public boolean isCorrectAnswer(boolean b) {
-            return b == answer;
-        }
-    }
-
-    private class QuizPresenter {
-
-        private final QuizView view;
-        private final QuizModel model;
-
-        public QuizPresenter(QuizView view, QuizModel model) {
-            this.view = view;
-            this.model = model;
-            view.setQuestionText(model.getQuestionText());
-        }
-
-        public void onAnswer(boolean b) {
-            if (model.isCorrectAnswer(b))
-                view.showCorrectMessage();
-            else
-                view.showIncorrectMessage();
-        }
-    }
 }
