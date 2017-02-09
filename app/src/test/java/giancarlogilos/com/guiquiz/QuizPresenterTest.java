@@ -22,12 +22,14 @@ public class QuizPresenterTest {
     @Test
     public void ItShouldShowTheQuestionOnInitialize() {
         // Arrange
-        QuizView view = mock(QuizView.class);
         String actual = "New Question";
-        QuizModel model = new QuizModel(actual, true);
+        QuizView view = mock(QuizView.class);
 
         // Act
-        new QuizPresenter(view, model);
+        new QuizPresenterBuilder()
+                .withModel(new QuizModel(actual, true))
+                .withView(view)
+                .build();
 
         // Assert
         verify(view).setQuestionText(actual);
@@ -95,6 +97,17 @@ public class QuizPresenterTest {
         presenter.onAnswer(true);
 
         verify(view, never()).showIncorrectMessage();
+    }
+
+    @Test
+    public void ItShouldShowTheNextQuestionOnNext() {
+        QuizView view = mock(QuizView.class);
+        QuizModel model = new QuizModel("Some Question", true);
+        QuizPresenter presenter = new QuizPresenter(view, model);
+
+        //presenter.onNext();
+
+        //verify(view).setQuestionText(expected);
     }
 
 

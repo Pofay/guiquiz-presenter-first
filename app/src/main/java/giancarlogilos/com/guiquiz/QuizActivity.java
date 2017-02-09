@@ -33,11 +33,6 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
         setSupportActionBar(toolbar);
     }
 
-    private void setUpTriad() {
-        model = new QuizModel(getString(R.string.question_text), false);
-        presenter = new QuizPresenter(this,model);
-    }
-
     private void setupComponents() {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
@@ -59,6 +54,11 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
                presenter.onAnswer(false);
             }
         });
+    }
+
+    private void setUpTriad() {
+        model = new QuizModel(getString(R.string.question_text), false);
+        presenter = new QuizPresenter(this,model);
     }
 
     private void showMessage(int resourceIdMessage) {
