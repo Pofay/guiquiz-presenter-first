@@ -27,10 +27,10 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
-        setSupportActionBar(toolbar);
-        setUpTriad();
         setupComponents();
         setupButtonListeners();
+        setUpTriad();
+        setSupportActionBar(toolbar);
     }
 
     private void setUpTriad() {
