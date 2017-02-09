@@ -7,12 +7,20 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 import android.widget.Toast;
 
-public class QuizActivity extends AppCompatActivity {
+import core.QuizModel;
+import core.QuizPresenter;
+import core.QuizView;
+
+public class QuizActivity extends AppCompatActivity implements QuizView{
 
     private Button mTrueButton;
+    private TextView questionText;
     private Button mFalseButton;
+    private QuizPresenter presenter;
+    private QuizModel model;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -20,14 +28,20 @@ public class QuizActivity extends AppCompatActivity {
         setContentView(R.layout.activity_quiz);
         Toolbar toolbar = (Toolbar) findViewById(R.id.toolbar);
         setSupportActionBar(toolbar);
+        setUpTriad();
         setupComponents();
         setupButtonListeners();
+    }
+
+    private void setUpTriad() {
+        model = new QuizModel(getString(R.string.question_text), false);
+        presenter = new QuizPresenter(this,model);
     }
 
     private void setupComponents() {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-
+        questionText = (TextView) findViewById(R.id.question_text);
     }
 
     private void setupButtonListeners() {
@@ -35,14 +49,14 @@ public class QuizActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                showMessage(R.string.correct_toast);
+                presenter.onAnswer(true);
             }
         });
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
 
-                showMessage(R.string.incorrect_toast);
+               presenter.onAnswer(false);
             }
         });
     }
@@ -71,5 +85,21 @@ public class QuizActivity extends AppCompatActivity {
         }
 
         return super.onOptionsItemSelected(item);
+    }
+
+    @Override
+    public void setQuestionText(String actual) {
+        questionText.setText(actual);
+    }
+
+    @Override
+    public void showCorrectMessage() {
+
+        showMessage(R.string.correct_toast);
+    }
+
+    @Override
+    public void showIncorrectMessage() {
+        showMessage(R.string.incorrect_toast);
     }
 }
