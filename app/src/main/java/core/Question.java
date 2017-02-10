@@ -5,6 +5,7 @@ package core;
  */
 public class Question {
     public String statement;
+    public boolean answer = true;
 
     public Question(String statement, boolean answer) {
         this.statement = statement;

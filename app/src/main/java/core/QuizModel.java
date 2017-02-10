@@ -8,6 +8,7 @@ public class QuizModel {
     private Question[] questions;
     private String questionText;
     private boolean answer;
+    private int currentIndex;
 
     public QuizModel(String questionText, boolean answer) {
         this.questionText = questionText;
@@ -20,13 +21,19 @@ public class QuizModel {
     }
 
     public String getQuestionText() {
-        if(questions != null)
+        if(questions != null && currentIndex == 0)
             return questions[0].statement;
+        else if(currentIndex == 1)
+            return questions[1].statement;
         return questionText;
     }
 
     public boolean isCorrectAnswer(boolean givenAnswer) {
         return givenAnswer == answer;
+    }
+
+    public void loadNextQuestion() {
+        currentIndex++;
     }
 }
 

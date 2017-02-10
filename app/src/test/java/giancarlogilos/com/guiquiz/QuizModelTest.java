@@ -1,15 +1,12 @@
 package giancarlogilos.com.guiquiz;
 
 import org.junit.Test;
-import org.junit.runner.RunWith;
-import org.mockito.runners.MockitoJUnitRunner;
 
 import core.Question;
 import core.QuizModel;
 
-import static org.hamcrest.core.Is.is;
 import static org.junit.Assert.assertEquals;
-import static org.junit.Assert.assertThat;
+import static org.junit.Assert.assertFalse;
 
 /**
  * Created by Gilos on 2/10/2017.
@@ -30,5 +27,18 @@ public class QuizModelTest {
         assertEquals(expected.statement, actual);
     }
 
+    @Test
+    public void ItShouldProperlyLoadTheNextQuestion() {
+        Question expected = new Question("Next Question", false);
+        QuizModel sut = new QuizModel(new Question[]{
+                new Question("Previous Question", true),
+                expected
+        });
+
+        sut.loadNextQuestion();
+        String actual = sut.getQuestionText();
+        // Assert
+        assertEquals(expected.statement, actual);
+    }
 
 }
