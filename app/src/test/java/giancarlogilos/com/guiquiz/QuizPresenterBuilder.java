@@ -33,4 +33,9 @@ public class QuizPresenterBuilder {
     public QuizPresenter build(){
         return new QuizPresenter(view, model);
     }
+
+    public QuizPresenterBuilder withQuestion(String question, boolean answer) {
+        this.model = new QuizModel(question, answer);
+        return this;
+    }
 }

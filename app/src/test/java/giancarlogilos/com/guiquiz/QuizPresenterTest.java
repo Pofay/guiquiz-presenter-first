@@ -106,7 +106,7 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withModel(new QuizModel("Some Question", true))
+                .withQuestion("Some Question", true)
                 .build();
 
         presenter.onAnswer(true);
