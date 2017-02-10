@@ -40,10 +40,13 @@ public class QuizPresenterTest {
         // Arrange
         QuizView view = mock(QuizView.class);
         String actual = "I am a Question";
-        QuizModel model = new QuizModel(actual, true);
 
         // Act
-        new QuizPresenter(view, model);
+        new QuizPresenterBuilder()
+                .withModel(new QuizModel(actual, true))
+                .withView(view)
+                .build();
+
 
         // Assert
         verify(view).setQuestionText(actual);
@@ -54,10 +57,12 @@ public class QuizPresenterTest {
     public void ItShouldNotInvokeAnyOtherOperationInTheViewOnCreation() {
         // Arrange
         QuizView view = mock(QuizView.class);
-        QuizModel model = new QuizModel("", true);
 
         // Act
-        new QuizPresenter(view, model);
+        new QuizPresenterBuilder()
+                .withView(view)
+                .build();
+
         // Assert
         verify(view, never()).showCorrectMessage();
     }
@@ -67,8 +72,11 @@ public class QuizPresenterTest {
         // Arrange
         QuizView view = mock(QuizView.class);
         String question = "I am always true";
-        QuizModel model = new QuizModel(question, true);
-        QuizPresenter presenter = new QuizPresenter(view, model);
+        boolean answer = true;
+        QuizPresenter presenter = new QuizPresenterBuilder()
+                .withView(view)
+                .withModel(new QuizModel(question, answer))
+                .build();
         // Act
         presenter.onAnswer(true);
 
@@ -78,12 +86,17 @@ public class QuizPresenterTest {
 
     @Test
     public void ItShouldShowIncorrectMessageWhenAnswerIsIncorrect() {
+        // Arrange
         QuizView view = mock(QuizView.class);
         String question = "Are you mad?";
-        QuizModel model = new QuizModel(question, false);
-        QuizPresenter presenter = new QuizPresenter(view, model);
-
+        boolean answer = false;
+        QuizPresenter presenter = new QuizPresenterBuilder()
+                .withView(view)
+                .withModel(new QuizModel(question, answer))
+                .build();
+        // Act
         presenter.onAnswer(true);
+        // Assert
 
         verify(view).showIncorrectMessage();
     }
@@ -91,8 +104,10 @@ public class QuizPresenterTest {
     @Test
     public void ItShouldNotShowAnIncorrectMessageWhenAnswerIsCorrect() {
         QuizView view = mock(QuizView.class);
-        QuizModel model = new QuizModel("Some Question", true);
-        QuizPresenter presenter = new QuizPresenter(view, model);
+        QuizPresenter presenter = new QuizPresenterBuilder()
+                .withView(view)
+                .withModel(new QuizModel("Some Question", true))
+                .build();
 
         presenter.onAnswer(true);
 
