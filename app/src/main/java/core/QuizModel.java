@@ -5,6 +5,7 @@ package core;
  */
 
 public class QuizModel {
+    private Question[] questions;
     private String questionText;
     private boolean answer;
 
@@ -14,10 +15,13 @@ public class QuizModel {
     }
 
     public QuizModel(Question[] questions) {
+        this.questions = questions;
 
     }
 
     public String getQuestionText() {
+        if(questions != null)
+            return questions[0].statement;
         return questionText;
     }
 

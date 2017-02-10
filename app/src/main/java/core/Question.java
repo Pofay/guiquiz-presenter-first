@@ -7,5 +7,7 @@ public class Question {
     public String statement;
 
     public Question(String statement, boolean answer) {
+        this.statement = statement;
+
     }
 }

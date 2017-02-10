@@ -27,7 +27,7 @@ public class QuizModelTest {
         });
         String actual = sut.getQuestionText();
         // Assert
-        assertEquals(expected, actual);
+        assertEquals(expected.statement, actual);
     }
 
 
