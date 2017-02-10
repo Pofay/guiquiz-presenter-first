@@ -27,7 +27,7 @@ public class QuizPresenterTest {
 
         // Act
         new QuizPresenterBuilder()
-                .withModel(new QuizModel(actual, true))
+                .withQuestion(actual, false)
                 .withView(view)
                 .build();
 
@@ -43,7 +43,7 @@ public class QuizPresenterTest {
 
         // Act
         new QuizPresenterBuilder()
-                .withModel(new QuizModel(actual, true))
+                .withQuestion(actual, true)
                 .withView(view)
                 .build();
 
@@ -71,11 +71,9 @@ public class QuizPresenterTest {
     public void ItShouldShowCorrectMessageWhenAnswerIsCorrect() {
         // Arrange
         QuizView view = mock(QuizView.class);
-        String question = "I am always true";
-        boolean answer = true;
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withModel(new QuizModel(question, answer))
+                .withQuestion("I am always true", true)
                 .build();
         // Act
         presenter.onAnswer(true);
@@ -88,11 +86,9 @@ public class QuizPresenterTest {
     public void ItShouldShowIncorrectMessageWhenAnswerIsIncorrect() {
         // Arrange
         QuizView view = mock(QuizView.class);
-        String question = "Are you mad?";
-        boolean answer = false;
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withModel(new QuizModel(question, answer))
+                .withQuestion("Are you mad?", false)
                 .build();
         // Act
         presenter.onAnswer(true);

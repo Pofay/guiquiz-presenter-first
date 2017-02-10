@@ -20,10 +20,6 @@ public class QuizPresenterBuilder {
         this.view = mock(QuizView.class);
     }
 
-    public QuizPresenterBuilder withModel(QuizModel model){
-        this.model = model;
-        return this;
-    }
 
     public QuizPresenterBuilder withView(QuizView view){
         this.view = view;
