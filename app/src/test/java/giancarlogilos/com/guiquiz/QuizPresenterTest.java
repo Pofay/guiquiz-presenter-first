@@ -113,8 +113,11 @@ public class QuizPresenterTest {
     @Test
     public void ItShouldShowTheNextQuestionOnNext() {
         QuizView view = mock(QuizView.class);
-        QuizModel model = new QuizModel("Some Question", true);
-        QuizPresenter presenter = new QuizPresenter(view, model);
+        QuizPresenter presenter  = new QuizPresenterBuilder()
+                .withView(view)
+                .withQuestion("Another Question", false)
+                .withQuestion("Another Question2", true)
+                .build();
 
         //presenter.onNext();
 
