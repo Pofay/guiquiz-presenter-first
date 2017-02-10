@@ -5,12 +5,16 @@ package core;
  */
 
 public class QuizModel {
-    private final String questionText;
+    private String questionText;
     private boolean answer;
 
     public QuizModel(String questionText, boolean answer) {
         this.questionText = questionText;
         this.answer = answer;
+    }
+
+    public QuizModel(Question[] questions) {
+
     }
 
     public String getQuestionText() {
