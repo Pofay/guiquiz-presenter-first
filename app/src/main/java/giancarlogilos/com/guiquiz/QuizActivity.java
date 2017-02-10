@@ -10,6 +10,7 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import core.Question;
 import core.QuizModel;
 import core.QuizPresenter;
 import core.QuizView;
@@ -57,7 +58,10 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
     }
 
     private void setUpTriad() {
-        model = new QuizModel(getString(R.string.question_text), false);
+        Question[] questions = new Question[]{
+                new Question(getString(R.string.question_text), false)
+        };
+        model = new QuizModel(questions);
         presenter = new QuizPresenter(this,model);
     }
 
