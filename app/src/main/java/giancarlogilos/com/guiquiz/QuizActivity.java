@@ -15,11 +15,12 @@ import core.QuizModel;
 import core.QuizPresenter;
 import core.QuizView;
 
-public class QuizActivity extends AppCompatActivity implements QuizView{
+public class QuizActivity extends AppCompatActivity implements QuizView {
 
     private Button mTrueButton;
-    private TextView questionText;
     private Button mFalseButton;
+    private Button nextButton;
+    private TextView questionText;
     private QuizPresenter presenter;
     private QuizModel model;
 
@@ -37,6 +38,7 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
     private void setupComponents() {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
+        nextButton = (Button) findViewById(R.id.next_button);
         questionText = (TextView) findViewById(R.id.question_text);
     }
 
@@ -52,7 +54,13 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
             @Override
             public void onClick(View v) {
 
-               presenter.onAnswer(false);
+                presenter.onAnswer(false);
+            }
+        });
+        nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onNext();
             }
         });
     }
@@ -62,11 +70,11 @@ public class QuizActivity extends AppCompatActivity implements QuizView{
                 new Question(getString(R.string.question_text), false)
         };
         model = new QuizModel(questions);
-        presenter = new QuizPresenter(this,model);
+        presenter = new QuizPresenter(this, model);
     }
 
     private void showMessage(int resourceIdMessage) {
-        Toast.makeText(QuizActivity.this, resourceIdMessage,Toast.LENGTH_SHORT).show();
+        Toast.makeText(QuizActivity.this, resourceIdMessage, Toast.LENGTH_SHORT).show();
     }
 
     @Override
