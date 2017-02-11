@@ -10,10 +10,6 @@ public class QuizModel {
     private boolean answer;
     private int currentIndex;
 
-    public QuizModel(String questionText, boolean answer) {
-        this.questionText = questionText;
-        this.answer = answer;
-    }
 
     public QuizModel(Question[] questions) {
         this.questions = questions;
