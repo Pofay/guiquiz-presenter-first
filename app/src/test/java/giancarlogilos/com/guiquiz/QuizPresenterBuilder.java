@@ -1,5 +1,6 @@
 package giancarlogilos.com.guiquiz;
 
+import core.Question;
 import core.QuizModel;
 import core.QuizPresenter;
 import core.QuizView;
@@ -30,8 +31,8 @@ public class QuizPresenterBuilder {
         return new QuizPresenter(view, model);
     }
 
-    public QuizPresenterBuilder withQuestion(String question, boolean answer) {
-        this.model = new QuizModel(question, answer);
+    public QuizPresenterBuilder withOneQuestion(String question, boolean answer) {
+        this.model = new QuizModel(new Question[]{ new Question(question, answer) } );
         return this;
     }
 }

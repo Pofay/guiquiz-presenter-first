@@ -4,7 +4,6 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
-import core.QuizModel;
 import core.QuizPresenter;
 import core.QuizView;
 
@@ -27,7 +26,7 @@ public class QuizPresenterTest {
 
         // Act
         new QuizPresenterBuilder()
-                .withQuestion(actual, false)
+                .withOneQuestion(actual, false)
                 .withView(view)
                 .build();
 
@@ -43,7 +42,7 @@ public class QuizPresenterTest {
 
         // Act
         new QuizPresenterBuilder()
-                .withQuestion(actual, true)
+                .withOneQuestion(actual, true)
                 .withView(view)
                 .build();
 
@@ -73,7 +72,7 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withQuestion("I am always true", true)
+                .withOneQuestion("I am always true", true)
                 .build();
         // Act
         presenter.onAnswer(true);
@@ -88,7 +87,7 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withQuestion("Are you mad?", false)
+                .withOneQuestion("Are you mad?", false)
                 .build();
         // Act
         presenter.onAnswer(true);
@@ -102,7 +101,7 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizPresenter presenter = new QuizPresenterBuilder()
                 .withView(view)
-                .withQuestion("Some Question", true)
+                .withOneQuestion("Some Question", true)
                 .build();
 
         presenter.onAnswer(true);
@@ -115,8 +114,8 @@ public class QuizPresenterTest {
         QuizView view = mock(QuizView.class);
         QuizPresenter presenter  = new QuizPresenterBuilder()
                 .withView(view)
-                .withQuestion("Another Question", false)
-                .withQuestion("Another Question2", true)
+                .withOneQuestion("Another Question", false)
+                .withOneQuestion("Another Question2", true)
                 .build();
 
         //presenter.onNext();
