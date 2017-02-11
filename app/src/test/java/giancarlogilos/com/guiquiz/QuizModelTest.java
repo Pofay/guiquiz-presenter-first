@@ -44,5 +44,25 @@ public class QuizModelTest {
         assertTrue(sut.isCorrectAnswer(false));
     }
 
+    @Test
+    public void ItShouldCylceBackToTheFirstQuestionWhenGoingNextQuestionAtLastQuestion() {
+        Question expected = new Question("I am First!", true);
+        QuizModel sut = new QuizModel(new Question[]{
+                expected,
+                new Question("I am Second!", true),
+                new Question("I am Last!", true)
+        });
+
+        sut.loadNextQuestion();
+        sut.loadNextQuestion();
+        sut.loadNextQuestion();
+        sut.loadNextQuestion();
+
+        String actual = sut.getQuestionText();
+        // Assert
+        assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(true));
+    }
+
 
 }
