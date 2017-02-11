@@ -15,9 +15,7 @@ public class QuizModel {
     }
 
     public String getQuestionText() {
-        if (questions != null && currentIndex == 0)
-            return questions[0].statement;
-        return questions[1].statement;
+        return questions[currentIndex].statement;
     }
 
     public boolean isCorrectAnswer(boolean givenAnswer) {
