@@ -23,5 +23,7 @@ public class QuizPresenter {
     }
 
     public void onNext() {
+        model.loadNextQuestion();
+        view.setQuestionText(model.getQuestionText());
     }
 }

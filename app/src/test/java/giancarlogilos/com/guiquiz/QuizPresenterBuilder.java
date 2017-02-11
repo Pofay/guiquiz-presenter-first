@@ -37,5 +37,7 @@ public class QuizPresenterBuilder {
     }
 
     public QuizPresenterBuilder withMultipleQuestions(Question[] questions) {
+        this.model = new QuizModel(questions);
+        return this;
     }
 }
