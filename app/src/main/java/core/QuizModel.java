@@ -6,8 +6,6 @@ package core;
 
 public class QuizModel {
     private Question[] questions;
-    private String questionText;
-    private boolean answer;
     private int currentIndex;
 
 
@@ -17,19 +15,15 @@ public class QuizModel {
     }
 
     public String getQuestionText() {
-        if(questions != null && currentIndex == 0)
+        if (questions != null && currentIndex == 0)
             return questions[0].statement;
-        else if(currentIndex == 1)
-            return questions[1].statement;
-        return questionText;
+        return questions[1].statement;
     }
 
     public boolean isCorrectAnswer(boolean givenAnswer) {
-        if(questions != null && currentIndex == 0)
+        if (questions != null && currentIndex == 0)
             return questions[0].answer == givenAnswer;
-        else if(questions != null && currentIndex == 1)
-            return questions[1].answer == givenAnswer;
-        return givenAnswer == answer;
+        return questions[1].answer == givenAnswer;
     }
 
     public void loadNextQuestion() {
