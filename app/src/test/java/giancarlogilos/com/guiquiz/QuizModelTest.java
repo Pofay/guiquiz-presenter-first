@@ -56,7 +56,6 @@ public class QuizModelTest {
         sut.loadNextQuestion();
         sut.loadNextQuestion();
         sut.loadNextQuestion();
-        sut.loadNextQuestion();
 
         String actual = sut.getQuestionText();
         // Assert

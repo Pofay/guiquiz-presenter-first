@@ -23,7 +23,7 @@ public class QuizModel {
     }
 
     public void loadNextQuestion() {
-        currentIndex++;
+        currentIndex = (currentIndex + 1) % questions.length;
     }
 }
 
