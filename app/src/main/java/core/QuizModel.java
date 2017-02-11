@@ -29,6 +29,8 @@ public class QuizModel {
     }
 
     public boolean isCorrectAnswer(boolean givenAnswer) {
+        if(questions != null)
+            return questions[0].answer == givenAnswer;
         return givenAnswer == answer;
     }
 
