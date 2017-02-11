@@ -7,6 +7,7 @@ import core.QuizModel;
 
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertTrue;
 
 /**
  * Created by Gilos on 2/10/2017.
@@ -25,6 +26,7 @@ public class QuizModelTest {
         String actual = sut.getQuestionText();
         // Assert
         assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(true));
     }
 
     @Test
@@ -40,5 +42,6 @@ public class QuizModelTest {
         // Assert
         assertEquals(expected.statement, actual);
     }
+
 
 }
