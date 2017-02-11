@@ -41,6 +41,7 @@ public class QuizModelTest {
         String actual = sut.getQuestionText();
         // Assert
         assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(false));
     }
 
 
