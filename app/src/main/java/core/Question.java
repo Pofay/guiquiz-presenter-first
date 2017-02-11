@@ -9,6 +9,7 @@ public class Question {
 
     public Question(String statement, boolean answer) {
         this.statement = statement;
+        this.answer = answer;
 
     }
 }
