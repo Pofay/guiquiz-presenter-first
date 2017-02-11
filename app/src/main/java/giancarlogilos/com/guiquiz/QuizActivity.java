@@ -67,7 +67,13 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
 
     private void setUpTriad() {
         Question[] questions = new Question[]{
-                new Question(getString(R.string.question_text), false)
+
+                new Question(getString(R.string.first_question), false),
+                new Question(getString(R.string.question_oceans), true),
+                new Question(getString(R.string.question_mideast), false),
+                new Question(getString(R.string.question_africa), false),
+                new Question(getString(R.string.question_americas), true),
+                new Question(getString(R.string.question_asia), true)
         };
         model = new QuizModel(questions);
         presenter = new QuizPresenter(this, model);
