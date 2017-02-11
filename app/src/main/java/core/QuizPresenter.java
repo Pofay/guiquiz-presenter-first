@@ -21,4 +21,7 @@ public class QuizPresenter {
         else
             view.showIncorrectMessage();
     }
+
+    public void onNext() {
+    }
 }

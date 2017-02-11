@@ -35,4 +35,7 @@ public class QuizPresenterBuilder {
         this.model = new QuizModel(new Question[]{ new Question(question, answer) } );
         return this;
     }
+
+    public QuizPresenterBuilder withMultipleQuestions(Question[] questions) {
+    }
 }

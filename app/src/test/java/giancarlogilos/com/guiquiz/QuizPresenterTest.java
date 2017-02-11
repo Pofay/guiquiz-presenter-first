@@ -4,6 +4,7 @@ import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.mockito.runners.MockitoJUnitRunner;
 
+import core.Question;
 import core.QuizPresenter;
 import core.QuizView;
 
@@ -112,15 +113,19 @@ public class QuizPresenterTest {
     @Test
     public void ItShouldShowTheNextQuestionOnNext() {
         QuizView view = mock(QuizView.class);
+        Question expected = new Question("Next Question", false);
+        Question[] questions = new Question[]{
+                new Question("First Question", true),
+                expected
+        };
         QuizPresenter presenter  = new QuizPresenterBuilder()
                 .withView(view)
-                .withOneQuestion("Another Question", false)
-                .withOneQuestion("Another Question2", true)
+                .withMultipleQuestions(questions)
                 .build();
 
-        //presenter.onNext();
+        presenter.onNext();
 
-        //verify(view).setQuestionText(expected);
+        verify(view).setQuestionText(expected.statement);
     }
 
 
