@@ -25,5 +25,9 @@ public class QuizModel {
     public void loadNextQuestion() {
         currentIndex = (currentIndex + 1) % questions.length;
     }
+
+    public void loadPreviousQuestion() {
+        currentIndex = (currentIndex - 1) % questions.length;
+    }
 }
 

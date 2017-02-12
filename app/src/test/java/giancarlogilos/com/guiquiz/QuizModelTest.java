@@ -63,5 +63,40 @@ public class QuizModelTest {
         assertTrue(sut.isCorrectAnswer(true));
     }
 
+    @Test
+    public void ItJustLoadsTheSameQuestionWhenThereIsOnlyOneQuestion() {
+        Question expected = new Question("I am First!", true);
+        QuizModel sut = new QuizModel(new Question[]{
+                expected
+        });
+
+        sut.loadNextQuestion();
+
+        String actual = sut.getQuestionText();
+        // Assert
+        assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(true));
+    }
+
+    @Test
+    public void ItShouldBeAbleToCycleBackToThePreviousQuestion() {
+
+        Question expected = new Question("Q2", false);
+        QuizModel sut = new QuizModel(new Question[]{
+                new Question("Q1", true),
+                expected,
+                new Question("Q3", false)
+        });
+
+
+        sut.loadNextQuestion();
+        sut.loadNextQuestion();
+        sut.loadPreviousQuestion();
+        String actual = sut.getQuestionText();
+
+        assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(false));
+    }
+
 
 }
