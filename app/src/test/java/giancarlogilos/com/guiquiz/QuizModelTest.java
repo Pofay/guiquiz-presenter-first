@@ -79,6 +79,21 @@ public class QuizModelTest {
     }
 
     @Test
+    public void ItJustLoadsTheSameQuestionOnLoadingThePreviousQuestionWhenThereIsOnlyOneQuestion(){
+         Question expected = new Question("I am First!", true);
+        QuizModel sut = new QuizModel(new Question[]{
+                expected
+        });
+
+        sut.loadPreviousQuestion();
+
+        String actual = sut.getQuestionText();
+        // Assert
+        assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(true));
+    }
+
+    @Test
     public void ItShouldBeAbleToCycleBackToThePreviousQuestion() {
 
         Question expected = new Question("Q2", false);
