@@ -1,5 +1,7 @@
 package core;
 
+import javax.inject.Inject;
+
 /**
  * Created by Gilos on 2/9/2017.
  */
@@ -9,6 +11,7 @@ public class QuizPresenter {
     private final QuizView view;
     private final QuizModel model;
 
+    @Inject
     public QuizPresenter(QuizView view, QuizModel model) {
         this.view = view;
         this.model = model;

@@ -7,6 +7,7 @@ import android.view.Menu;
 import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
 
@@ -19,11 +20,11 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
 
     private Button mTrueButton;
     private Button mFalseButton;
-    private Button nextButton;
+    private ImageButton nextButton;
     private TextView questionText;
     private QuizPresenter presenter;
     private QuizModel model;
-    private Button previousButton;
+    private ImageButton previousButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,9 +40,9 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
     private void setupComponents() {
         mTrueButton = (Button) findViewById(R.id.true_button);
         mFalseButton = (Button) findViewById(R.id.false_button);
-        nextButton = (Button) findViewById(R.id.next_button);
+        nextButton = (ImageButton) findViewById(R.id.next_button);
         questionText = (TextView) findViewById(R.id.question_text);
-        previousButton = (Button) findViewById(R.id.prev_button);
+        previousButton = (ImageButton) findViewById(R.id.prev_button);
     }
 
     private void setupButtonListeners() {
