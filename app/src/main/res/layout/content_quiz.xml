@@ -6,11 +6,11 @@
     android:orientation="vertical">
 
     <TextView
+        android:id="@+id/question_text"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:padding="24dp"
-        android:text="@string/first_question"
-        android:id="@+id/question_text"/>
+        android:text="@string/first_question" />
 
     <LinearLayout
         android:layout_width="wrap_content"
@@ -30,12 +30,27 @@
             android:text="@string/false_button" />
 
     </LinearLayout>
-    <Button
+
+    <LinearLayout
         android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:drawableRight="@drawable/arrow_right"
-        android:drawablePadding="4dp"
-        android:text="@string/next_button"
-        android:id="@+id/next_button"/>
+        android:layout_height="wrap_content">
+
+        <Button
+            android:id="+@id/prev_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawableLeft="@drawable/arrow_left"
+            android:drawablePadding="4dp"
+            android:text="@string/prev_button" />
+
+        <Button
+            android:id="@+id/next_button"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:drawablePadding="4dp"
+            android:drawableRight="@drawable/arrow_right"
+            android:text="@string/next_button" />
+    </LinearLayout>
+
 </LinearLayout>
      
