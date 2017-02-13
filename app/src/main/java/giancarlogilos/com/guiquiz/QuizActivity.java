@@ -48,14 +48,12 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
         mTrueButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 presenter.onAnswer(true);
             }
         });
         mFalseButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
                 presenter.onAnswer(false);
             }
         });
