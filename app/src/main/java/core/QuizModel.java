@@ -13,7 +13,7 @@ public class QuizModel {
         this.questions = questions;
     }
 
-    public String getQuestionText() {
+    public String getCurrentQuestionStatement() {
         return questions[currentIndex].statement;
     }
 
@@ -26,7 +26,7 @@ public class QuizModel {
     }
 
     public void loadPreviousQuestion() {
-        currentIndex = (currentIndex - 1) % questions.length;
+        currentIndex = currentIndex > 0 ? currentIndex - 1 : questions.length - 1;
     }
 }
 

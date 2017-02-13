@@ -24,7 +24,7 @@ public class QuizModelTest {
                 expected,
                 new Question("Next Question", false)
         });
-        String actual = sut.getQuestionText();
+        String actual = sut.getCurrentQuestionStatement();
         // Assert
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(true));
@@ -39,7 +39,7 @@ public class QuizModelTest {
         });
 
         sut.loadNextQuestion();
-        String actual = sut.getQuestionText();
+        String actual = sut.getCurrentQuestionStatement();
         // Assert
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(false));
@@ -58,7 +58,7 @@ public class QuizModelTest {
         sut.loadNextQuestion();
         sut.loadNextQuestion();
 
-        String actual = sut.getQuestionText();
+        String actual = sut.getCurrentQuestionStatement();
         // Assert
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(true));
@@ -73,14 +73,13 @@ public class QuizModelTest {
 
         sut.loadNextQuestion();
 
-        String actual = sut.getQuestionText();
+        String actual = sut.getCurrentQuestionStatement();
         // Assert
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(true));
     }
 
 
-    // TO DO : Need to add more tests for this scenario (i.e Add a test with more questions)
     @Test
     public void ItJustLoadsTheSameQuestionOnLoadingThePreviousQuestionWhenThereIsOnlyOneQuestion() {
         Question expected = new Question("I am First!", true);
@@ -91,7 +90,7 @@ public class QuizModelTest {
         sut.loadPreviousQuestion();
 
 
-        String actual = sut.getQuestionText();
+        String actual = sut.getCurrentQuestionStatement();
         // Assert
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(true));
@@ -111,11 +110,29 @@ public class QuizModelTest {
         sut.loadNextQuestion();
         sut.loadNextQuestion();
         sut.loadPreviousQuestion();
-        String actual = sut.getQuestionText();
+
+        String actual = sut.getCurrentQuestionStatement();
 
         assertEquals(expected.statement, actual);
         assertTrue(sut.isCorrectAnswer(false));
     }
 
+    @Test
+    public void ItShouldGoToTheLastQuestionWhenLoadingPreviousQuestion() {
+        Question expected = new Question("Last", false);
+        QuizModel sut = new QuizModel(new Question[]{
+                new Question("Q1", true),
+                new Question("Q3", false),
+                expected
+        });
+
+
+        sut.loadPreviousQuestion();
+
+        String actual = sut.getCurrentQuestionStatement();
+
+        assertEquals(expected.statement, actual);
+        assertTrue(sut.isCorrectAnswer(false));
+    }
 
 }

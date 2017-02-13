@@ -12,7 +12,7 @@ public class QuizPresenter {
     public QuizPresenter(QuizView view, QuizModel model) {
         this.view = view;
         this.model = model;
-        view.setQuestionText(model.getQuestionText());
+        view.setQuestionText(model.getCurrentQuestionStatement());
     }
 
     public void onAnswer(boolean givenAnswer) {
@@ -24,6 +24,6 @@ public class QuizPresenter {
 
     public void onNext() {
         model.loadNextQuestion();
-        view.setQuestionText(model.getQuestionText());
+        view.setQuestionText(model.getCurrentQuestionStatement());
     }
 }
