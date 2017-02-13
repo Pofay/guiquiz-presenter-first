@@ -26,4 +26,9 @@ public class QuizPresenter {
         model.loadNextQuestion();
         view.setQuestionText(model.getCurrentQuestionStatement());
     }
+
+    public void onPrevious() {
+        model.loadPreviousQuestion();
+        view.setQuestionText(model.getCurrentQuestionStatement());
+    }
 }

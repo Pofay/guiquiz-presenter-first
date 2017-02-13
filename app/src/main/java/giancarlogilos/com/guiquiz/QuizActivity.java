@@ -23,6 +23,7 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
     private TextView questionText;
     private QuizPresenter presenter;
     private QuizModel model;
+    private Button previousButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -40,6 +41,7 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
         mFalseButton = (Button) findViewById(R.id.false_button);
         nextButton = (Button) findViewById(R.id.next_button);
         questionText = (TextView) findViewById(R.id.question_text);
+        previousButton = (Button) findViewById(R.id.prev_button);
     }
 
     private void setupButtonListeners() {
@@ -61,6 +63,12 @@ public class QuizActivity extends AppCompatActivity implements QuizView {
             @Override
             public void onClick(View v) {
                 presenter.onNext();
+            }
+        });
+        previousButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                presenter.onPrevious();
             }
         });
     }
