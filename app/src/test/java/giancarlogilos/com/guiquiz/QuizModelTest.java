@@ -8,6 +8,7 @@ import core.QuizModel;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.fail;
 
 /**
  * Created by Gilos on 2/10/2017.
@@ -78,14 +79,17 @@ public class QuizModelTest {
         assertTrue(sut.isCorrectAnswer(true));
     }
 
+
+    // TO DO : Need to add more tests for this scenario (i.e Add a test with more questions)
     @Test
-    public void ItJustLoadsTheSameQuestionOnLoadingThePreviousQuestionWhenThereIsOnlyOneQuestion(){
-         Question expected = new Question("I am First!", true);
+    public void ItJustLoadsTheSameQuestionOnLoadingThePreviousQuestionWhenThereIsOnlyOneQuestion() {
+        Question expected = new Question("I am First!", true);
         QuizModel sut = new QuizModel(new Question[]{
                 expected
         });
 
         sut.loadPreviousQuestion();
+
 
         String actual = sut.getQuestionText();
         // Assert
