@@ -11,7 +11,6 @@ public class QuizModel {
 
     public QuizModel(Question[] questions) {
         this.questions = questions;
-
     }
 
     public String getQuestionText() {
