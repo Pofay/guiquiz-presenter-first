@@ -28,7 +28,6 @@ public class QuizModel {
 
     public void loadPreviousQuestion() {
         currentIndex = (currentIndex - 1) % questions.length;
-        System.out.print(currentIndex);
     }
 }
 
